@@ -13,7 +13,7 @@ calculateMismatchFrequencies <- function(fastqFiles, referenceSequence, method=c
     
     if(length(sr1)>=minCoverage){
     	if(method == "pairwiseAlignment"){
-    		aln1 <- pairwiseAlignment(sread(sr1), referenceSequence, type="global")
+    		aln1 <- pwalign::pairwiseAlignment(sread(sr1), referenceSequence, type="global")
     		mismatchSummary <- pwalign::mismatchSummary(aln1)$subject    		
     	} else
     		mismatchSummary <- compareDNAString(sread(sr1), referenceSequence)
